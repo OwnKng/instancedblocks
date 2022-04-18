@@ -103,6 +103,7 @@ const Sketch = () => {
       receiveShadow
       onPointerMove={(e: any) => set(e.instanceId)}
       onPointerOut={(e: any) => set(undefined)}
+      onPointerDown={(e: any) => set(e.instanceId)}
     />
   )
 }

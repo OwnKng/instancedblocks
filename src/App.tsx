@@ -14,7 +14,7 @@ const App = () => (
       shadows
     >
       <ambientLight intensity={0.2} />
-      <pointLight position={[0, 10, 0]} intensity={0.5} />
+      <pointLight position={[0, 10, 0]} intensity={0.8} />
       <Sketch />
     </Canvas>
   </div>
