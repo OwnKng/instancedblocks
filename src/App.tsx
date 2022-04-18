@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Canvas } from "@react-three/fiber"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import "./App.css"
+import Sketch from "./Sketch"
+import * as THREE from "three"
+import { EffectComposer } from "@react-three/postprocessing"
+import Effect from "./Effect"
 
-export default App;
+const App = () => (
+  <div className='App'>
+    <Canvas
+      orthographic
+      camera={{ zoom: 20 }}
+      onCreated={({ camera }) => {
+        camera.position.setFromSphericalCoords(20, Math.PI / 3, Math.PI / 4)
+        camera.lookAt(0, 0, 0)
+      }}
+      shadows
+    >
+      <ambientLight intensity={0.2} />
+      <pointLight position={[0, 10, 0]} intensity={1.0} />
+      <Sketch />
+      <EffectComposer>
+        <Effect />
+      </EffectComposer>
+    </Canvas>
+  </div>
+)
+
+export default App
